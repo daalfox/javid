@@ -5,9 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "plugins": [{ "name": "typescript-vue-plugin" }]
   },
-
   "references": [
     {
       "path": "./tsconfig.node.json"
