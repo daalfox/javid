@@ -21,6 +21,11 @@ const v = computed({
     <button class="px-3">
       <IconCalendarEvent class="h-4 w-4" />
     </button>
-    <input type="text" v-model="v" class="mr-3 rtl:ml-3 w-full py-2 text-center tracking-widest" disabled />
+    <input
+      type="text"
+      v-model="v"
+      class="mr-3 w-full py-2 text-center tracking-widest rtl:ml-3 rtl:mr-0"
+      disabled
+    />
   </div>
 </template>

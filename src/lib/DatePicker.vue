@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InputField from './components/MainInputField.vue'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps<{
   modelValue?: string
@@ -15,8 +15,6 @@ const v = computed({
     emit('update:modelValue', v)
   }
 })
-
-const datePickerVisible = ref(true)
 </script>
 <template>
   <InputField v-model="v" />
