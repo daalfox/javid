@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@tabler/icons-vue": "^2.4.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
