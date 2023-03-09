@@ -17,9 +17,9 @@ const v = computed({
   }
 })
 
-const modalVisible = ref(false)
+const modalVisible = ref(true)
 </script>
 <template>
   <InputField v-model="v" :modalVisible="modalVisible" @open-modal="modalVisible = true" />
-  <Modal :modalVisible="modalVisible" @close-modal="modalVisible = false" />
+  <Modal :modalVisible="modalVisible" @close-modal="modalVisible = false" dir="ltr" />
 </template>
