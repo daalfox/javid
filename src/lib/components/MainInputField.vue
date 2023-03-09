@@ -23,7 +23,6 @@ const inputFocused = ref(false)
   <div class="flex w-44 items-center overflow-hidden rounded-lg shadow">
     <button
       @click="emit('openModal')"
-      style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
       class="self-stretch px-3 hover:text-blue-500"
       :class="(modalVisible || inputFocused) && 'text-blue-500'"
     >

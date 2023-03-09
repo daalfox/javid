@@ -1,3 +1,6 @@
+<script setup lang="ts">
+defineEmits(['openDayView'])
+</script>
 <template>
-  <p>Year/Month view</p>
+  <button @click="$emit('openDayView')">Year/Month view</button>
 </template>

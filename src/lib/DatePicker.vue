@@ -23,3 +23,9 @@ const modalVisible = ref(true)
   <InputField v-model="v" :modalVisible="modalVisible" @open-modal="modalVisible = true" />
   <Modal :modalVisible="modalVisible" @close-modal="modalVisible = false" dir="ltr" />
 </template>
+
+<style lang="postcss" scoped>
+:deep(button) {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+</style>

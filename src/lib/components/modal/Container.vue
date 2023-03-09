@@ -13,8 +13,8 @@ const view = ref(View.Day)
 <template>
   <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
     <div class="pointer-events-auto rounded-lg bg-white p-3 shadow">
-      <DayView v-if="view === View.Day" />
-      <YearMonthView v-if="view === View.YearMonth" />
+      <DayView v-if="view === View.Day" @open-year-month-view="view = View.YearMonth" />
+      <YearMonthView v-if="view === View.YearMonth" @open-day-view="view = View.Day" />
     </div>
   </div>
 </template>

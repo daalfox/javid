@@ -10,3 +10,9 @@ const date = ref('1401-11-16')
     <DatePicker v-model="date" />
   </div>
 </template>
+
+<style lang="postcss">
+body {
+  @apply font-vazirmatn;
+}
+</style>
