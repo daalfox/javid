@@ -4,11 +4,11 @@ defineEmits(['openYearMonthView'])
 </script>
 <template>
   <div class="flex items-baseline gap-2">
-    <button class="rounded-lg bg-neutral-50 p-2">
+    <button class="rounded-lg bg-neutral-50 p-2 hover:bg-blue-50 hover:text-blue-700">
       <IconChevronLeft class="h-4 w-4" />
     </button>
-    <button @click="$emit('openYearMonthView')">1401, اسفند</button>
-    <button class="rounded-lg bg-neutral-50 p-2">
+    <button class="hover:text-blue-700" @click="$emit('openYearMonthView')">1401, اسفند</button>
+    <button class="rounded-lg bg-neutral-50 p-2 hover:bg-blue-50 hover:text-blue-700">
       <IconChevronRight class="h-4 w-4" />
     </button>
   </div>
