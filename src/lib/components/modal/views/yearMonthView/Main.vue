@@ -33,11 +33,16 @@ const y = computed({
     </div>
   </div>
   <div class="mt-2 flex">
-    <div class="grid grid-cols-3 grid-rows-4" dir="rtl">
+    <div class="grid grid-cols-3 grid-rows-4 gap-1" dir="rtl">
       <div
-        v-for="m in monthNames"
+        v-for="(m, i) in monthNames"
         style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
-        class="flex cursor-pointer items-center justify-center rounded-lg p-3 text-sm hover:bg-blue-50 hover:text-blue-700"
+        class="flex cursor-pointer items-center justify-center rounded-lg p-3 text-sm"
+        :class="{
+          'hover:bg-blue-50 hover:text-blue-700': i + 1 !== month,
+          'bg-blue-600 text-white': i + 1 === month
+        }"
+        @click="$emit('update:month', i + 1)"
       >
         {{ m }}
       </div>
