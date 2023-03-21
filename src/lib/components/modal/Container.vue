@@ -22,6 +22,11 @@ if (!date) {
   date = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
 }
 let splittedDate = date.split('/');
+const tempDate = ref({
+  year: parseInt(splittedDate[0]),
+  month: parseInt(splittedDate[1]),
+  day: parseInt(splittedDate[2])
+});
 year.value = parseInt(splittedDate[0]);
 month.value = parseInt(splittedDate[1]);
 day.value = parseInt(splittedDate[2]);
@@ -29,8 +34,9 @@ day.value = parseInt(splittedDate[2]);
 
 <template>
   <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-    <div class="pointer-events-auto rounded-lg bg-white p-3 shadow">
+    <div class="pointer-events-auto rounded-lg bg-white p-3 shadow text-sm">
       <DayView
+        v-model:tempDate="tempDate"
         v-model:year="year"
         v-model:month="month"
         v-model:day="day"
