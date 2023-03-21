@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { IconArrowLeft, IconChevronLeft, IconChevronRight } from '@tabler/icons-vue'
+import ControlButton from '@/lib/components/ControlButton.vue'
 import { ref } from 'vue'
 defineEmits(['openDayView'])
 
@@ -21,30 +22,15 @@ const currentYear = ref(1401)
 </script>
 <template>
   <div class="flex justify-between">
-    <button
-      @click="$emit('openDayView')"
-      class="rounded-lg bg-neutral-50 p-1 hover:bg-blue-50 hover:text-blue-700"
-    >
-      <IconArrowLeft class="stroke-1" />
-    </button>
+    <ControlButton :icon="IconArrowLeft" @click="$emit('openDayView')" />
     <div class="flex items-center gap-2">
       <input
         class="w-20 rounded-lg border border-neutral-200 p-0.5 text-center focus:border-blue-400 focus:outline-none"
         type="number"
         v-model="currentYear"
       />
-      <button
-        @click="currentYear--"
-        class="rounded-lg bg-neutral-50 p-2 hover:bg-blue-50 hover:text-blue-700"
-      >
-        <IconChevronLeft class="h-4 w-4" />
-      </button>
-      <button
-        @click="currentYear++"
-        class="rounded-lg bg-neutral-50 p-2 hover:bg-blue-50 hover:text-blue-700"
-      >
-        <IconChevronRight class="h-4 w-4" />
-      </button>
+      <ControlButton :icon="IconChevronLeft" @click="currentYear--" />
+      <ControlButton :icon="IconChevronRight" @click="currentYear++" />
     </div>
   </div>
   <div class="mt-2 flex">
