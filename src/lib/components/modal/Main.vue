@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import Container from './Container.vue'
-import Overlay from './Overlay.vue'
+import { computed } from 'vue';
+import Container from './Container.vue';
+import Overlay from './Overlay.vue';
 
-defineProps<{
-  modalVisible: boolean
-}>()
-defineEmits(['closeModal'])
+const props = defineProps<{
+  modelValue?: string;
+  modalVisible: boolean;
+}>();
+const emit = defineEmits(['closeModal', 'update:modelValue']);
+
+const v = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(v) {
+    emit('update:modelValue', v);
+  }
+});
 </script>
 <template>
   <div v-if="modalVisible" class="absolute inset-0">
     <Overlay @click="$emit('closeModal')" />
-    <Container />
+    <Container v-model="v" />
   </div>
 </template>

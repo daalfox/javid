@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { IconCalendarEvent } from '@tabler/icons-vue'
+import { computed, ref } from 'vue';
+import { IconCalendarEvent } from '@tabler/icons-vue';
 
 const props = defineProps<{
-  modalVisible: boolean
-  modelValue?: string
-}>()
-const emit = defineEmits(['update:modelValue', 'openModal'])
+  modalVisible: boolean;
+  modelValue?: string;
+}>();
+const emit = defineEmits(['update:modelValue', 'openModal']);
 
 const v = computed({
   get() {
-    return props.modelValue
+    return props.modelValue;
   },
   set(v) {
-    emit('update:modelValue', v)
+    emit('update:modelValue', v);
   }
-})
+});
 
-const inputFocused = ref(false)
+const inputFocused = ref(false);
 </script>
 <template>
   <div class="flex w-44 items-center overflow-hidden rounded-lg shadow">

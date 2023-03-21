@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
+import type { Component } from 'vue';
 
 defineProps<{
-  icon: Component
-}>()
+  icon: Component;
+}>();
 </script>
 <template>
   <button class="rounded-lg bg-neutral-100 p-2 hover:bg-blue-50 hover:text-blue-700">

@@ -14,6 +14,7 @@
   "dependencies": {
     "@fontsource/vazirmatn": "^4.5.5",
     "@tabler/icons-vue": "^2.4.0",
+    "jalali-moment": "^3.3.11",
     "vue": "^3.2.47"
   },
   "devDependencies": {
