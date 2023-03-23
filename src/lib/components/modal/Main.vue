@@ -21,6 +21,6 @@ const v = computed({
 <template>
   <div v-if="modalVisible" class="absolute inset-0">
     <Overlay @click="$emit('closeModal')" />
-    <Container v-model="v" />
+    <Container v-model="v" @close-modal="$emit('closeModal')" />
   </div>
 </template>

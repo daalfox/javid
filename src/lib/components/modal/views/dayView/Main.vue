@@ -87,8 +87,9 @@ const occupiedCells = computed(
           $emit('update:tempDate', { year, month, day: i });
         }
       "
-      >{{ i }}</span
     >
+      {{ i }}
+    </span>
     <span
       v-for="i in occupiedCells % 7 === 0 ? 0 : 7 - (occupiedCells % 7)"
       class="flex h-10 w-10 items-center justify-center text-neutral-400"

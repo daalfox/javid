@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 import DayView from './views/dayView/Main.vue';
 import YearMonthView from './views/yearMonthView/Main.vue';
+import ActionButton from '@/lib/components/ActionButton.vue';
 
 const props = defineProps<{
   modelValue?: string;
 }>();
+defineEmits(['update:modelValue', 'closeModal']);
 
 enum View {
   YearMonth,
@@ -33,8 +35,8 @@ day.value = parseInt(splittedDate[2]);
 </script>
 
 <template>
-  <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-    <div class="pointer-events-auto rounded-lg bg-white p-3 shadow text-sm">
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-center text-sm">
+    <div class="pointer-events-auto rounded-lg bg-white p-3 shadow">
       <DayView
         v-model:tempDate="tempDate"
         v-model:year="year"
@@ -49,6 +51,16 @@ day.value = parseInt(splittedDate[2]);
         v-if="view === View.YearMonth"
         @open-day-view="view = View.Day"
       />
+      <div class="flex gap-2" dir="rtl">
+        <ActionButton
+          title="تایید"
+          @click="
+            $emit('update:modelValue', `${tempDate.year}/${tempDate.month}/${tempDate.day}`);
+            $emit('closeModal');
+          "
+        />
+        <ActionButton title="انصراف" @click="$emit('closeModal')" />
+      </div>
     </div>
   </div>
 </template>
