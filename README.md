@@ -1,6 +1,6 @@
 # javid
 
-Modern jalali datepicker for vue 3
+Modern jalali datepicker for vue
 
 # TODO
 
