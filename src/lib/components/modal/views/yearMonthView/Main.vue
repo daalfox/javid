@@ -22,7 +22,7 @@ const y = computed({
 <template>
   <div class="flex justify-between">
     <ControlButton :icon="IconArrowLeft" @click="$emit('openDayView')" />
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2">
       <input
         class="w-20 rounded-lg border border-neutral-200 p-0.5 text-center focus:border-blue-400 focus:outline-none"
         type="number"
