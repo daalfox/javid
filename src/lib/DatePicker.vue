@@ -17,7 +17,7 @@ const v = computed({
   }
 });
 
-const modalVisible = ref(true);
+const modalVisible = ref(false);
 </script>
 <template>
   <InputField v-model="v" :modalVisible="modalVisible" @open-modal="modalVisible = true" />
