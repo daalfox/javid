@@ -6,7 +6,7 @@ defineProps<{
 }>();
 </script>
 <template>
-  <button class="rounded-lg bg-neutral-100 p-2 hover:bg-blue-50 hover:text-blue-700">
+  <button class="rounded-lg bg-neutral-100 p-2 hover:bg-blue-100 hover:text-blue-700">
     <component :is="icon" class="h-4 w-4" />
   </button>
 </template>
