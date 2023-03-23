@@ -42,7 +42,10 @@ const y = computed({
           'hover:bg-blue-50 hover:text-blue-700': i + 1 !== month,
           'bg-blue-600 text-white': i + 1 === month
         }"
-        @click="$emit('update:month', i + 1)"
+        @click="
+          $emit('update:month', i + 1);
+          $emit('openDayView');
+        "
       >
         {{ m }}
       </div>
