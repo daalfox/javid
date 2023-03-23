@@ -55,7 +55,12 @@ day.value = parseInt(splittedDate[2]);
         <ActionButton
           title="تایید"
           @click="
-            $emit('update:modelValue', `${tempDate.year}/${tempDate.month}/${tempDate.day}`);
+            $emit(
+              'update:modelValue',
+              `${tempDate.year}/${tempDate.month < 10 ? `0${tempDate.month}` : tempDate.month}/${
+                tempDate.day < 10 ? `0${tempDate.day}` : tempDate.day
+              }`
+            );
             $emit('closeModal');
           "
         />
