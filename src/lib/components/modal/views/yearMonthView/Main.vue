@@ -36,6 +36,7 @@ const y = computed({
     <div class="grid grid-cols-3 grid-rows-4 gap-1" dir="rtl">
       <div
         v-for="(m, i) in monthNames"
+        :key="i"
         style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
         class="flex cursor-pointer items-center justify-center rounded-lg p-3 text-sm"
         :class="{

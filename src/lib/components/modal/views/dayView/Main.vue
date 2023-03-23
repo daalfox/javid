@@ -60,10 +60,12 @@ const occupiedCells = computed(
     <span
       class="flex h-10 w-10 items-center justify-center text-neutral-500"
       v-for="weekDay in weekDaysShort"
+      :key="weekDay"
       >{{ weekDay }}</span
     >
     <span
       v-for="i in calculateMonthStart(year, month) - 1"
+      :key="i"
       class="flex h-10 w-10 items-center justify-center text-neutral-400"
       >{{
         (month === 1 ? jDaysInMonth(year - 1, 11) : jDaysInMonth(year, month - 2)) -
@@ -74,6 +76,7 @@ const occupiedCells = computed(
     >
     <span
       v-for="i in jDaysInMonth(year, month - 1)"
+      :key="i"
       class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg"
       :class="{
         'hover:bg-blue-50 hover:text-blue-700':
@@ -92,6 +95,7 @@ const occupiedCells = computed(
     </span>
     <span
       v-for="i in occupiedCells % 7 === 0 ? 0 : 7 - (occupiedCells % 7)"
+      :key="i"
       class="flex h-10 w-10 items-center justify-center text-neutral-400"
       >{{ i }}</span
     >

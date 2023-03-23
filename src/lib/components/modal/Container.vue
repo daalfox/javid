@@ -19,11 +19,11 @@ const day = ref();
 const month = ref();
 const year = ref();
 
-let date = props.modelValue;
-if (!date) {
-  date = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
+let date = ref(props.modelValue);
+if (!date.value) {
+  date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
 }
-let splittedDate = date.split('/');
+let splittedDate = date.value.split('/');
 const tempDate = ref({
   year: parseInt(splittedDate[0]),
   month: parseInt(splittedDate[1]),
