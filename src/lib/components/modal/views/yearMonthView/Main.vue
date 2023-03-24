@@ -5,17 +5,17 @@ import { monthNames } from '@/lib/constants';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  year: number;
-  month: number;
+  currentYear: number;
+  currentMonth: number;
 }>();
-const emit = defineEmits(['openDayView', 'update:year', 'update:month']);
+const emit = defineEmits(['openDayView', 'update:currentYear', 'update:currentMonth']);
 
 const y = computed({
   get() {
-    return props.year;
+    return props.currentYear;
   },
   set(v) {
-    return emit('update:year', v);
+    return emit('update:currentYear', v);
   }
 });
 </script>
@@ -28,8 +28,8 @@ const y = computed({
         type="number"
         v-model="y"
       />
-      <ControlButton :icon="IconChevronLeft" @click="$emit('update:year', year - 1)" />
-      <ControlButton :icon="IconChevronRight" @click="$emit('update:year', year + 1)" />
+      <ControlButton :icon="IconChevronLeft" @click="$emit('update:currentYear', currentYear - 1)" />
+      <ControlButton :icon="IconChevronRight" @click="$emit('update:currentYear', currentYear + 1)" />
     </div>
   </div>
   <div class="mt-2 flex">
@@ -40,11 +40,11 @@ const y = computed({
         style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
         class="flex cursor-pointer items-center justify-center rounded-lg p-3 text-sm"
         :class="{
-          'hover:bg-blue-50 hover:text-blue-700': i + 1 !== month,
-          'bg-blue-600 text-white': i + 1 === month
+          'hover:bg-blue-50 hover:text-blue-700': i + 1 !== currentMonth,
+          'bg-blue-600 text-white': i + 1 === currentMonth
         }"
         @click="
-          $emit('update:month', i + 1);
+          $emit('update:currentMonth', i + 1);
           $emit('openDayView');
         "
       >

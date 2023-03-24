@@ -7,19 +7,21 @@ import { calculateMonthStart } from '@/lib/utils';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  tempDate: {
+  selectedDate: {
     year: number;
     month: number;
     day: number;
   };
-  year: number;
-  month: number;
-  day: number;
+  currentYear: number;
+  currentMonth: number;
 }>();
-defineEmits(['openYearMonthView', 'update:tempDate', 'update:year', 'update:month', 'update:day']);
+defineEmits(['openYearMonthView', 'update:selectedDate', 'update:currentYear', 'update:currentMonth']);
 
 const occupiedCells = computed(
-  () => calculateMonthStart(props.year, props.month) - 1 + jDaysInMonth(props.year, props.month - 1)
+  () =>
+    calculateMonthStart(props.currentYear, props.currentMonth) -
+    1 +
+    jDaysInMonth(props.currentYear, props.currentMonth - 1)
 );
 </script>
 <template>
@@ -28,11 +30,11 @@ const occupiedCells = computed(
       :icon="IconChevronLeft"
       @click="
         () => {
-          if (month === 1) {
-            $emit('update:year', year - 1);
-            $emit('update:month', 12);
+          if (currentMonth === 1) {
+            $emit('update:currentYear', currentYear - 1);
+            $emit('update:currentMonth', 12);
           } else {
-            $emit('update:month', month - 1);
+            $emit('update:currentMonth', currentMonth - 1);
           }
         }
       "
@@ -41,19 +43,19 @@ const occupiedCells = computed(
       :icon="IconChevronRight"
       @click="
         () => {
-          if (month === 12) {
-            $emit('update:year', year + 1);
-            $emit('update:month', 1);
+          if (currentMonth === 12) {
+            $emit('update:currentYear', currentYear + 1);
+            $emit('update:currentMonth', 1);
           } else {
-            $emit('update:month', month + 1);
+            $emit('update:currentMonth', currentMonth + 1);
           }
         }
       "
     />
     <button class="flex-1 hover:text-blue-700" @click="$emit('openYearMonthView')">
-      {{ year }}
+      {{ currentYear }}
       ,
-      {{ monthNames[month - 1] }}
+      {{ monthNames[currentMonth - 1] }}
     </button>
   </div>
   <div class="mt-2 grid grid-cols-7 gap-1" dir="rtl">
@@ -64,30 +66,31 @@ const occupiedCells = computed(
       >{{ weekDay }}</span
     >
     <span
-      v-for="i in calculateMonthStart(year, month) - 1"
+      v-for="i in calculateMonthStart(currentYear, currentMonth) - 1"
       :key="i"
       class="flex h-10 w-10 items-center justify-center text-neutral-400"
       >{{
-        (month === 1 ? jDaysInMonth(year - 1, 11) : jDaysInMonth(year, month - 2)) -
-        calculateMonthStart(year, month) +
+        (currentMonth === 1
+          ? jDaysInMonth(currentYear - 1, 11)
+          : jDaysInMonth(currentYear, currentMonth - 2)) -
+        calculateMonthStart(currentYear, currentMonth) +
         i +
         1
       }}</span
     >
     <span
-      v-for="i in jDaysInMonth(year, month - 1)"
+      v-for="i in jDaysInMonth(currentYear, currentMonth - 1)"
       :key="i"
       class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg"
       :class="{
         'hover:bg-blue-50 hover:text-blue-700':
-          tempDate.year !== year || tempDate.month !== month || tempDate.day !== i,
+          selectedDate.year !== currentYear || selectedDate.month !== currentMonth || selectedDate.day !== i,
         'bg-blue-600 text-white':
-          tempDate.year === year && tempDate.month === month && tempDate.day === i
+          selectedDate.year === currentYear && selectedDate.month === currentMonth && selectedDate.day === i
       }"
       @click="
         () => {
-          $emit('update:day', i);
-          $emit('update:tempDate', { year, month, day: i });
+          $emit('update:selectedDate', { year: currentYear, month: currentMonth, day: i });
         }
       "
     >

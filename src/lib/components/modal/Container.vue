@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { parseDate } from '@/lib/utils';
 import DayView from './views/dayView/Main.vue';
 import YearMonthView from './views/yearMonthView/Main.vue';
 import ActionButton from '@/lib/components/ActionButton.vue';
@@ -15,39 +16,29 @@ enum View {
 }
 const view = ref(View.Day);
 
-const day = ref();
-const month = ref();
-const year = ref();
-
 let date = ref(props.modelValue);
 if (!date.value) {
   date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
 }
-let splittedDate = date.value.split('/');
-const tempDate = ref({
-  year: parseInt(splittedDate[0]),
-  month: parseInt(splittedDate[1]),
-  day: parseInt(splittedDate[2])
-});
-year.value = parseInt(splittedDate[0]);
-month.value = parseInt(splittedDate[1]);
-day.value = parseInt(splittedDate[2]);
+const selectedDate = ref(parseDate(date.value));
+
+const currentYear = ref(parseDate(date.value).year);
+const currentMonth = ref(parseDate(date.value).month);
 </script>
 
 <template>
   <div class="pointer-events-none absolute inset-0 flex items-center justify-center text-sm">
     <div class="pointer-events-auto rounded-lg bg-white p-3 shadow">
       <DayView
-        v-model:tempDate="tempDate"
-        v-model:year="year"
-        v-model:month="month"
-        v-model:day="day"
+        v-model:selectedDate="selectedDate"
+        v-model:currentYear="currentYear"
+        v-model:currentMonth="currentMonth"
         v-if="view === View.Day"
         @open-year-month-view="view = View.YearMonth"
       />
       <YearMonthView
-        v-model:month="month"
-        v-model:year="year"
+        v-model:currentYear="currentYear"
+        v-model:currentMonth="currentMonth"
         v-if="view === View.YearMonth"
         @open-day-view="view = View.Day"
       />
@@ -57,9 +48,9 @@ day.value = parseInt(splittedDate[2]);
           @click="
             $emit(
               'update:modelValue',
-              `${tempDate.year}/${tempDate.month < 10 ? `0${tempDate.month}` : tempDate.month}/${
-                tempDate.day < 10 ? `0${tempDate.day}` : tempDate.day
-              }`
+              `${selectedDate.year}/${
+                selectedDate.month < 10 ? `0${selectedDate.month}` : selectedDate.month
+              }/${selectedDate.day < 10 ? `0${selectedDate.day}` : selectedDate.day}`
             );
             $emit('closeModal');
           "

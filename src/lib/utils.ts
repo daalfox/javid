@@ -8,3 +8,16 @@ export function calculateMonthStart(year: number, month: number): number {
   }
   return weekDayOfFirstDay;
 }
+
+export function parseDate(date: string): {
+  year: number;
+  month: number;
+  day: number;
+} {
+  let splittedDate = date.split('/');
+  return {
+    year: parseInt(splittedDate[0]),
+    month: parseInt(splittedDate[1]),
+    day: parseInt(splittedDate[2])
+  };
+}
