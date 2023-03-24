@@ -14,7 +14,7 @@ export function parseDate(date: string): {
   month: number;
   day: number;
 } {
-  let splittedDate = date.split('/');
+  const splittedDate = date.split('/');
   return {
     year: parseInt(splittedDate[0]),
     month: parseInt(splittedDate[1]),

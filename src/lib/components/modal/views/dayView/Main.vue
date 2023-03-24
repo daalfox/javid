@@ -15,7 +15,12 @@ const props = defineProps<{
   currentYear: number;
   currentMonth: number;
 }>();
-defineEmits(['openYearMonthView', 'update:selectedDate', 'update:currentYear', 'update:currentMonth']);
+defineEmits([
+  'openYearMonthView',
+  'update:selectedDate',
+  'update:currentYear',
+  'update:currentMonth'
+]);
 
 const occupiedCells = computed(
   () =>
@@ -84,9 +89,13 @@ const occupiedCells = computed(
       class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg"
       :class="{
         'hover:bg-blue-50 hover:text-blue-700':
-          selectedDate.year !== currentYear || selectedDate.month !== currentMonth || selectedDate.day !== i,
+          selectedDate.year !== currentYear ||
+          selectedDate.month !== currentMonth ||
+          selectedDate.day !== i,
         'bg-blue-600 text-white':
-          selectedDate.year === currentYear && selectedDate.month === currentMonth && selectedDate.day === i
+          selectedDate.year === currentYear &&
+          selectedDate.month === currentMonth &&
+          selectedDate.day === i
       }"
       @click="
         () => {

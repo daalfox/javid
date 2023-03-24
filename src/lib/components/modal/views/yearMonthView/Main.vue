@@ -28,8 +28,14 @@ const y = computed({
         type="number"
         v-model="y"
       />
-      <ControlButton :icon="IconChevronLeft" @click="$emit('update:currentYear', currentYear - 1)" />
-      <ControlButton :icon="IconChevronRight" @click="$emit('update:currentYear', currentYear + 1)" />
+      <ControlButton
+        :icon="IconChevronLeft"
+        @click="$emit('update:currentYear', currentYear - 1)"
+      />
+      <ControlButton
+        :icon="IconChevronRight"
+        @click="$emit('update:currentYear', currentYear + 1)"
+      />
     </div>
   </div>
   <div class="mt-2 flex">
