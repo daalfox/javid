@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import InputField from './components/MainInputField.vue';
 import Modal from './components/modal/Main.vue';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { parseDate } from './utils';
 
 const props = defineProps<{
   modelValue?: string;
@@ -14,6 +15,16 @@ const v = computed({
   },
   set(v) {
     emit('update:modelValue', v);
+  }
+});
+
+onMounted(() => {
+  if (props.modelValue) {
+    let d = parseDate(props.modelValue);
+    emit(
+      'update:modelValue',
+      `${d.year}/${d.month < 10 ? `0${d.month}` : d.month}/${d.day < 10 ? `0${d.day}` : d.day}`
+    );
   }
 });
 
