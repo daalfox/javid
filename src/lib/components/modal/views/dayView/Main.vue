@@ -30,7 +30,7 @@ const occupiedCells = computed(
 );
 </script>
 <template>
-  <div class="jdp-gap-2 jdp-flex jdp-items-baseline jdp-justify-between">
+  <div class="jdp-flex jdp-items-baseline jdp-justify-between jdp-gap-2">
     <ControlButton
       :icon="IconChevronLeft"
       @click="
@@ -63,9 +63,9 @@ const occupiedCells = computed(
       {{ monthNames[currentMonth - 1] }}
     </button>
   </div>
-  <div class="jdp-grid-cols-7 jdp-gap-1 jdp-mt-2 jdp-grid" dir="rtl">
+  <div class="jdp-mt-2 jdp-grid jdp-grid-cols-7 jdp-gap-1" dir="rtl">
     <span
-      class="jdp-h-10 jdp-w-10 jdp-text-neutral-500 jdp-flex jdp-items-center jdp-justify-center"
+      class="jdp-flex jdp-h-10 jdp-w-10 jdp-items-center jdp-justify-center jdp-text-neutral-500"
       v-for="weekDay in weekDaysShort"
       :key="weekDay"
       >{{ weekDay }}</span
@@ -73,7 +73,7 @@ const occupiedCells = computed(
     <span
       v-for="i in calculateMonthStart(currentYear, currentMonth) - 1"
       :key="i"
-      class="jdp-h-10 jdp-w-10 jdp-text-neutral-400 jdp-flex jdp-items-center jdp-justify-center"
+      class="jdp-flex jdp-h-10 jdp-w-10 jdp-items-center jdp-justify-center jdp-text-neutral-400"
       >{{
         (currentMonth === 1
           ? jDaysInMonth(currentYear - 1, 11)
@@ -86,7 +86,7 @@ const occupiedCells = computed(
     <span
       v-for="i in jDaysInMonth(currentYear, currentMonth - 1)"
       :key="i"
-      class="jdp-h-10 jdp-w-10 jdp-cursor-pointer jdp-rounded-lg jdp-flex jdp-items-center jdp-justify-center"
+      class="jdp-flex jdp-h-10 jdp-w-10 jdp-cursor-pointer jdp-items-center jdp-justify-center jdp-rounded-lg"
       :class="{
         'hover:jdp-bg-blue-50 hover:jdp-text-blue-700':
           selectedDate.year !== currentYear ||
@@ -108,7 +108,7 @@ const occupiedCells = computed(
     <span
       v-for="i in occupiedCells % 7 === 0 ? 0 : 7 - (occupiedCells % 7)"
       :key="i"
-      class="jdp-h-10 jdp-w-10 jdp-text-neutral-400 jdp-flex jdp-items-center jdp-justify-center"
+      class="jdp-flex jdp-h-10 jdp-w-10 jdp-items-center jdp-justify-center jdp-text-neutral-400"
       >{{ i }}</span
     >
   </div>

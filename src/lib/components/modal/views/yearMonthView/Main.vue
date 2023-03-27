@@ -22,9 +22,9 @@ const y = computed({
 <template>
   <div class="jdp-flex jdp-justify-between">
     <ControlButton :icon="IconArrowLeft" @click="$emit('openDayView')" />
-    <div class="jdp-gap-2 jdp-flex">
+    <div class="jdp-flex jdp-gap-2">
       <input
-        class="jdp-w-20 jdp-rounded-lg jdp-border jdp-border-neutral-200 jdp-p-0.5 focus:jdp-border-blue-400 jdp-text-center focus:jdp-outline-none"
+        class="jdp-w-20 jdp-rounded-lg jdp-border jdp-border-neutral-200 jdp-p-0.5 jdp-text-center focus:jdp-border-blue-400 focus:jdp-outline-none"
         type="number"
         v-model="y"
       />
@@ -39,12 +39,12 @@ const y = computed({
     </div>
   </div>
   <div class="jdp-mt-2 jdp-flex">
-    <div class="jdp-grid-cols-3 jdp-grid-rows-4 jdp-gap-1 jdp-grid" dir="rtl">
+    <div class="jdp-grid jdp-grid-cols-3 jdp-grid-rows-4 jdp-gap-1" dir="rtl">
       <div
         v-for="(m, i) in monthNames"
         :key="i"
         style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
-        class="jdp-cursor-pointer jdp-rounded-lg jdp-p-3 jdp-text-sm jdp-flex jdp-items-center jdp-justify-center"
+        class="jdp-flex jdp-cursor-pointer jdp-items-center jdp-justify-center jdp-rounded-lg jdp-p-3 jdp-text-sm"
         :class="{
           'hover:jdp-bg-blue-50 hover:jdp-text-blue-700': i + 1 !== currentMonth,
           'jdp-bg-blue-600 jdp-text-white': i + 1 === currentMonth
