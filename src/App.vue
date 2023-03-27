@@ -6,7 +6,7 @@ const date = ref(new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date()));
 </script>
 <template>
   <div
-    class="jdp-min-h-screen jdp-gap-4 jdp-flex jdp-flex-col jdp-items-center jdp-justify-center"
+    class="jdp-flex jdp-min-h-screen jdp-flex-col jdp-items-center jdp-justify-center jdp-gap-4"
     dir="rtl"
   >
     <DatePicker v-model="date" />
@@ -14,4 +14,7 @@ const date = ref(new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date()));
 </template>
 
 <style lang="postcss">
+body {
+  @apply jdp-font-vazirmatn;
+}
 </style>
