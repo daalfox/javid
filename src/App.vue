@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DatePicker } from './lib/main';
+import { DatePicker } from './lib/entry';
 
 const date = ref(new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date()));
 </script>
