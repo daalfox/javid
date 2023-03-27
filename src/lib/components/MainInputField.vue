@@ -20,20 +20,20 @@ const v = computed({
 const inputFocused = ref(false);
 </script>
 <template>
-  <div class="flex w-44 items-center overflow-hidden rounded-lg shadow">
+  <div class="jdp-flex jdp-w-44 jdp-items-center jdp-overflow-hidden jdp-rounded-lg jdp-shadow">
     <button
       @click="emit('openModal')"
-      class="self-stretch px-3 hover:text-blue-500"
-      :class="(modalVisible || inputFocused) && 'text-blue-500'"
+      class="jdp-self-stretch jdp-px-3 hover:jdp-text-blue-500"
+      :class="(modalVisible || inputFocused) && 'jdp-text-blue-500'"
     >
-      <IconCalendarEvent class="h-4 w-4" />
+      <IconCalendarEvent class="jdp-h-4 jdp-w-4" />
     </button>
     <input
       type="text"
       v-model="v"
       @focusin="inputFocused = true"
       @focusout="inputFocused = false"
-      class="w-full py-2 pr-3 text-center tracking-widest focus:outline-none rtl:pl-3 rtl:pr-0"
+      class="jdp-w-full jdp-py-2 jdp-pr-3 jdp-text-center jdp-tracking-widest focus:jdp-outline-none rtl:jdp-pl-3 rtl:jdp-pr-0"
       disabled
     />
   </div>

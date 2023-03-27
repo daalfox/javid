@@ -1,3 +1,3 @@
 <template>
-  <div class="h-full w-full bg-neutral-900/10"></div>
+  <div class="jdp-h-full jdp-w-full jdp-bg-neutral-900/10"></div>
 </template>

@@ -30,7 +30,7 @@ const occupiedCells = computed(
 );
 </script>
 <template>
-  <div class="flex items-baseline justify-between gap-2">
+  <div class="jdp-gap-2 jdp-flex jdp-items-baseline jdp-justify-between">
     <ControlButton
       :icon="IconChevronLeft"
       @click="
@@ -57,15 +57,15 @@ const occupiedCells = computed(
         }
       "
     />
-    <button class="flex-1 hover:text-blue-700" @click="$emit('openYearMonthView')">
+    <button class="jdp-flex-1 hover:jdp-text-blue-700" @click="$emit('openYearMonthView')">
       {{ currentYear }}
       ,
       {{ monthNames[currentMonth - 1] }}
     </button>
   </div>
-  <div class="mt-2 grid grid-cols-7 gap-1" dir="rtl">
+  <div class="jdp-grid-cols-7 jdp-gap-1 jdp-mt-2 jdp-grid" dir="rtl">
     <span
-      class="flex h-10 w-10 items-center justify-center text-neutral-500"
+      class="jdp-h-10 jdp-w-10 jdp-text-neutral-500 jdp-flex jdp-items-center jdp-justify-center"
       v-for="weekDay in weekDaysShort"
       :key="weekDay"
       >{{ weekDay }}</span
@@ -73,7 +73,7 @@ const occupiedCells = computed(
     <span
       v-for="i in calculateMonthStart(currentYear, currentMonth) - 1"
       :key="i"
-      class="flex h-10 w-10 items-center justify-center text-neutral-400"
+      class="jdp-h-10 jdp-w-10 jdp-text-neutral-400 jdp-flex jdp-items-center jdp-justify-center"
       >{{
         (currentMonth === 1
           ? jDaysInMonth(currentYear - 1, 11)
@@ -86,13 +86,13 @@ const occupiedCells = computed(
     <span
       v-for="i in jDaysInMonth(currentYear, currentMonth - 1)"
       :key="i"
-      class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg"
+      class="jdp-h-10 jdp-w-10 jdp-cursor-pointer jdp-rounded-lg jdp-flex jdp-items-center jdp-justify-center"
       :class="{
-        'hover:bg-blue-50 hover:text-blue-700':
+        'hover:jdp-bg-blue-50 hover:jdp-text-blue-700':
           selectedDate.year !== currentYear ||
           selectedDate.month !== currentMonth ||
           selectedDate.day !== i,
-        'bg-blue-600 text-white':
+        'jdp-bg-blue-600 jdp-text-white':
           selectedDate.year === currentYear &&
           selectedDate.month === currentMonth &&
           selectedDate.day === i
@@ -108,7 +108,7 @@ const occupiedCells = computed(
     <span
       v-for="i in occupiedCells % 7 === 0 ? 0 : 7 - (occupiedCells % 7)"
       :key="i"
-      class="flex h-10 w-10 items-center justify-center text-neutral-400"
+      class="jdp-h-10 jdp-w-10 jdp-text-neutral-400 jdp-flex jdp-items-center jdp-justify-center"
       >{{ i }}</span
     >
   </div>

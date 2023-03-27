@@ -4,5 +4,5 @@ defineProps<{
 }>();
 </script>
 <template>
-  <button class="p-2 text-blue-500 hover:text-blue-700">{{ title }}</button>
+  <button class="jdp-p-2 jdp-text-blue-500 hover:jdp-text-blue-700">{{ title }}</button>
 </template>

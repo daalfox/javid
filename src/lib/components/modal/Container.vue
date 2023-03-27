@@ -27,8 +27,10 @@ const currentMonth = ref(parseDate(date.value).month);
 </script>
 
 <template>
-  <div class="pointer-events-none absolute inset-0 flex items-center justify-center text-sm">
-    <div class="pointer-events-auto rounded-lg bg-white p-3 shadow">
+  <div
+    class="jdp-text-sm jdp-pointer-events-none jdp-absolute jdp-inset-0 jdp-flex jdp-items-center jdp-justify-center"
+  >
+    <div class="jdp-rounded-lg jdp-bg-white jdp-p-3 jdp-shadow jdp-pointer-events-auto">
       <DayView
         v-model:selectedDate="selectedDate"
         v-model:currentYear="currentYear"
@@ -42,7 +44,7 @@ const currentMonth = ref(parseDate(date.value).month);
         v-if="view === View.YearMonth"
         @open-day-view="view = View.Day"
       />
-      <div class="flex gap-2" dir="rtl">
+      <div class="jdp-gap-2 jdp-flex" dir="rtl">
         <ActionButton
           title="تایید"
           @click="

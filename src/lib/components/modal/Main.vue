@@ -19,7 +19,7 @@ const v = computed({
 });
 </script>
 <template>
-  <div v-if="modalVisible" class="absolute inset-0">
+  <div v-if="modalVisible" class="jdp-absolute jdp-inset-0">
     <Overlay @click="$emit('closeModal')" />
     <Container v-model="v" @close-modal="$emit('closeModal')" />
   </div>
