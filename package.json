@@ -2,6 +2,26 @@
   "name": "javid",
   "version": "0.0.0",
   "private": true,
+  "description": "Modern jalali datepicker for vue",
+  "author": "daalfox",
+  "license": "MIT",
+  "main": "dist/javid.umd.js",
+  "module": "dist/javid.mjs",
+  "files": [
+    "dist/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/javid.mjs",
+      "require": "./dist/javid.umd.js"
+    },
+    "./dist/main.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "run-p type-check build-only",
