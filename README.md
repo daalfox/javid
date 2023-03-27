@@ -2,7 +2,7 @@
 
 Modern jalali datepicker for vue
 
-# TODO
+### TODO
 
 - [ ] seperator option (e.g. using '-' instead of '/')
 - [ ] more customizable ui
