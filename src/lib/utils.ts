@@ -9,12 +9,15 @@ export function calculateMonthStart(year: number, month: number): number {
   return weekDayOfFirstDay;
 }
 
-export function parseDate(date: string): {
+export function parseDate(
+  date: string,
+  seperator: string
+): {
   year: number;
   month: number;
   day: number;
 } {
-  const splittedDate = date.split('/');
+  const splittedDate = date.split(seperator);
   return {
     year: parseInt(splittedDate[0]),
     month: parseInt(splittedDate[1]),
