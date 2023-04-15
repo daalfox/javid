@@ -20,7 +20,6 @@ enum View {
 const view = ref(View.Day);
 
 let date = ref(props.modelValue);
-console.log(props.modelValue);
 if (!date.value) {
   date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
 }
@@ -54,11 +53,9 @@ const currentMonth = ref(parseDate(date.value, props.seperator).month);
           @click="
             $emit(
               'update:modelValue',
-              `${selectedDate.year}${props.seperator}${
+              `${selectedDate.year}${seperator}${
                 selectedDate.month < 10 ? `0${selectedDate.month}` : selectedDate.month
-              }${props.seperator}${
-                selectedDate.day < 10 ? `0${selectedDate.day}` : selectedDate.day
-              }`
+              }${seperator}${selectedDate.day < 10 ? `0${selectedDate.day}` : selectedDate.day}`
             );
             $emit('closeModal');
           "

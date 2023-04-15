@@ -23,6 +23,6 @@ const v = computed({
 <template>
   <div v-if="modalVisible" class="jdp-absolute jdp-inset-0">
     <Overlay @click="$emit('closeModal')" />
-    <Container v-model="v" :seperator="props.seperator" @close-modal="$emit('closeModal')" />
+    <Container v-model="v" :seperator="seperator" @close-modal="$emit('closeModal')" />
   </div>
 </template>
