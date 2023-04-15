@@ -50,7 +50,7 @@ const currentMonth = ref(parseDate(date.value, props.seperator).month);
         v-if="view === View.YearMonth"
         @open-day-view="view = View.Day"
       />
-      <div class="jdp-flex jdp-gap-2" dir="rtl">
+      <div class="jdp-mt-2 jdp-flex jdp-gap-2" dir="rtl">
         <ActionButton
           title="تایید"
           @click="
