@@ -21,7 +21,10 @@ const view = ref(View.Day);
 
 let date = ref(props.modelValue);
 if (!date.value) {
-  date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
+  date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn')
+    .format(new Date())
+    .split('/')
+    .join(props.seperator);
 }
 const selectedDate = ref(parseDate(date.value, props.seperator));
 
