@@ -7,23 +7,27 @@ import ActionButton from '@/lib/components/ActionButton.vue';
 
 const props = defineProps<{
   modelValue?: string;
+  seperator: string;
 }>();
+
 defineEmits(['update:modelValue', 'closeModal']);
 
 enum View {
   YearMonth,
   Day
 }
+
 const view = ref(View.Day);
 
 let date = ref(props.modelValue);
+console.log(props.modelValue);
 if (!date.value) {
   date.value = new Intl.DateTimeFormat('fa-IR-u-nu-latn').format(new Date());
 }
-const selectedDate = ref(parseDate(date.value));
+const selectedDate = ref(parseDate(date.value, props.seperator));
 
-const currentYear = ref(parseDate(date.value).year);
-const currentMonth = ref(parseDate(date.value).month);
+const currentYear = ref(parseDate(date.value, props.seperator).year);
+const currentMonth = ref(parseDate(date.value, props.seperator).month);
 </script>
 
 <template>
@@ -50,9 +54,11 @@ const currentMonth = ref(parseDate(date.value).month);
           @click="
             $emit(
               'update:modelValue',
-              `${selectedDate.year}/${
+              `${selectedDate.year}${props.seperator}${
                 selectedDate.month < 10 ? `0${selectedDate.month}` : selectedDate.month
-              }/${selectedDate.day < 10 ? `0${selectedDate.day}` : selectedDate.day}`
+              }${props.seperator}${
+                selectedDate.day < 10 ? `0${selectedDate.day}` : selectedDate.day
+              }`
             );
             $emit('closeModal');
           "

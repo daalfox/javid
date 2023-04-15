@@ -6,7 +6,9 @@ import Overlay from './Overlay.vue';
 const props = defineProps<{
   modelValue?: string;
   modalVisible: boolean;
+  seperator: string;
 }>();
+
 const emit = defineEmits(['closeModal', 'update:modelValue']);
 
 const v = computed({
@@ -21,6 +23,6 @@ const v = computed({
 <template>
   <div v-if="modalVisible" class="jdp-absolute jdp-inset-0">
     <Overlay @click="$emit('closeModal')" />
-    <Container v-model="v" @close-modal="$emit('closeModal')" />
+    <Container v-model="v" :seperator="props.seperator" @close-modal="$emit('closeModal')" />
   </div>
 </template>
